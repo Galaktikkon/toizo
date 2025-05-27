@@ -1,0 +1,233 @@
+\section*{Zadania}
+
+
+\section{Ćwiczenia 1}
+
+\begin{exercise}{nawiasy}
+Proszę zrealizować następujące zadanie:
+\begin{enumerate}[label=(\alph*)]
+    \item Napisać program maszyny Turinga rozpoznającej poprawne ciągi nawiasów, np.: \texttt{(()(()))}.
+    
+    \item Proszę zaproponować algorytm rozstrzygający powyższy język na dwutaśmowej maszynie Turinga, przy założeniu, że nie wolno modyfikować zawartości pierwszej taśmy (tej ze słowem wejściowym).
+    
+    \item j.w., ale na drugiej taśmie można użyć najwyżej $\mathcal{O}(\log n)$ komórek, gdzie $n$ to długość słowa wejściowego.
+    
+    \item j.w., ale słowo zawiera dwa rodzaje nawiasów (np. okrągłe i kwadratowe).
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{programowanie}
+Proszę napisać programy maszyn Turinga (w formie tabelki opisującej funkcję przejścia maszyny) rozstrzygające o następujących językach:
+
+\begin{enumerate}[label=(\alph*)]
+    \item $L_1 = \{x \in \{0,1\}^\star \mid x \text{ zawiera tyle samo 0 co 1}\}$.
+    
+    \item $L_2 = \{0^{2^n} \mid n \in \mathbb{N}\}$.
+    
+    \item $L_3 = \{\text{bin}(n)\#0^n \mid n \in \mathbb{N}\}$; przez $\text{bin}(n)$ rozumiemy liczbę $n$ zapisaną w postaci binarnej (dopuszczamy dowolną liczbę zer przed pierwszą jedynką).
+    
+    \item $L_4 = \{x \in \{0,1\}^\star \mid x = x^R\}$, gdzie przez $x^R$ rozumiemy słowo $x$ zapisane od tyłu.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{własności RE}
+Niech $L_1,L_2$ będą dwoma językami z RE. Proszę udowodnić, że:
+\begin{enumerate}[label=(\alph*)]
+    \item $L_1 \cap L_2 \in \text{RE}$
+    \item $L_1 \cup L_2 \in \text{RE}$
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{definicja rozstrzygalności}
+    Dany jest język:
+    $$L=\{0^n\text{ } |\text{ } \text{w 17-ym rozwinięciu liczby }\pi \text{występuje ciąg }n \text{ 7-ek pod rząd}\}$$
+Proszę udowodnić, że $L$ jest rozstrzygalny, albo uzasadnić intuicyjnie, że nie jest rozstrzygalny.
+\end{exercise}
+
+\section{Ćwiczenia 2}
+
+\begin{exercise}{równoważność modeli obliczeń}
+    Proszę pokazać, że język $L$ jest akceptowalny przez standardową maszynę Turinga wtedy i tylko wtedy, gdy jest akceptowalny przez:
+
+\begin{enumerate}
+    \item Maszynę z taśmą nieskończoną w obie strony.
+    
+    \item Maszynę z taśmą 2D: taśma jest płaszczyzną i głowica może się ruszać w lewo, prawo, górę i dół (poza tym tak jak standardowy model).
+    
+    \item Maszynę z krokiem w prawo i skokiem na początek taśmy: Mamy maszynę, która jest niemal taka sama jak standardowa maszyna z taśmą nieskończoną w jedną stronę, ale jest jedna różnica. Standardowa maszyna może zrobić zarówno krok o jedną komórkę w lewo jak i o jedną komórkę w prawo. Nasza nowa maszyna może zrobić krok o jedną komórkę taśmy w prawo, albo skoczyć na początek taśmy (czyli maksymalnie w lewo).
+    
+    \item Maszyna może usunąć podglądaną komórkę z taśmy. W efekcie głowica przesuwa się na pierwszą komórkę po prawej stronie od usuniętej. Jeśli maszyna nie usuwa danej komórki, to może na nią wpisać symbol inny, niż obecny tylko wtedy, gdy obecny symbol to $\Box$. \textbf{(Zadanie z kolokwium z roku 2015/16.)}
+    
+    \item W pojedynczym kroku, maszyna może wstawić nową komórkę, z dowolnie wybranym przez siebie symbolem, na prawo od aktualnie podglądanej komórki i zmienić stan. Maszyna nigdy nie może zmienić zawartości podglądanej komórki taśmy (nawet jeśli jest tam $\Box$). \textbf{(Zadanie z kolokwium z roku 2015/16.)}
+    
+    \item Maszyna chlapiąca atramentem to taka maszyna Turinga, która ma nieskończoną taśmę w obie strony oraz potrafi zapisywać wyłącznie symbole $\blacksquare$ (chlapięcie atramentem) oraz $\Box$ (symbol pusty—zmazanie chlapięcia atramentem). Proszę zwrócić uwagę, że maszyna chlapiąca atramentem może „zobaczyć” symbol inny niż $\blacksquare$ czy $\Box$ (jeśli taki symbol będzie w słowie wejściowym), ale już w następnym ruchu musi go nadpisać chlapięciem atramentu lub zmazać i zastąpić symbolem pustym. \textbf{(Zadanie z kolokwium z roku 2013/14.)}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{dowód, że przecięciem RE i coRE jest R}
+    Proszę udowodnić, że $\text{RE} \cap \text{co-RE} = \text{R}$
+\end{exercise}
+
+\begin{exercise}{własności w drugą stronę}
+    Wiadomo, że jeśli $A, B \in \text{R}$ to $A \cup B, A \cap B, AB \in \text{R}$. Czy to twierdzenie zachodzi w drugą stronę? Proszę odpowiedzieć na pytanie, czy zachodzą następujące implikacje:
+\begin{enumerate}
+    \item Jeśli $A \cup B \in R$ to $A,B \in \text{R}$
+    \item Jeśli $A \cap B \in R$ to $A,B \in \text{R}$
+    \item Jeśli $AB \in R$ to $A,B \in \text{R}$
+\end{enumerate}
+\end{exercise}
+\begin{exercise}{suma nieskończona języków z R}
+    Dany jest ciąg języków $A_0,A_1,A_2,...$, z których każdy jest rozstrzygalny. Proszę odpowiedzieć na pytanie, czy język
+    $$L = A_0 \cup A_1 \cup A_2 \cup \dots$$
+jest rozstrzygalny.
+\end{exercise}
+
+\section{Ćwiczenia 3}
+
+\begin{exercise}{twierdzenia dotyczące enumeratorów}
+    Mamy następujące twierdzenia:
+
+\begin{enumerate}[label=\textbf{Tw.\ \Alph*.}, leftmargin=2cm]
+  \item Język $L$ należy do RE wtedy i tylko wtedy, gdy istnieje wyliczający go enumerator.
+  
+  \item Język $L$ należy do R wtedy i tylko wtedy, gdy istnieje enumerator, który go wylicza i który wylicza słowa w kolejności niemalejących długości.
+  
+  \item Dla każdego nierozstrzygalnego języka $L$ z RE istnieje rozstrzygalny nieskończony język $L'$, taki że $L' \subseteq L$.
+  
+  \item Dla każdego nieskończonego języka rozstrzygalnego $L$ istnieje nierozstrzygalny język $L'$, taki że $L' \subseteq L$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{separacja języków z core}
+    Mamy dane dwa języki $A$ i $B$ należące do coRE, parami rozłączne ($A \cap B = \emptyset$). Proszę pokazać, że istnieje język $C$ rozstrzygalny taki, że $A$ zawiera się w $C$, a $B$ zawiera się w dopełnieniu $C$. (Innymi słowy, jeśli $x \in A$
+ to na pewno $x \in C$ i jeśli $x \in B$ to na pewno $x \notin C$).
+\end{exercise}
+
+\begin{exercise}{język prefiksowy}
+    Dany jest nierozstrzygalny język $U\subseteq1^\star$. Definiujemy funkcję:
+$$
+f(n)= 
+    \begin{cases}
+        a, \text{jeśli} 1^n \in U \\
+        b, \text{jeśli} 1^n \notin U
+    \end{cases}
+$$
+
+Definiujemy język $L=\{f(0),f(0)f(1),f(0)f(1)f(2),...\}$. Proszę udowodnić, że wszystkie nieskończone podzbiory języka $L$ są nierozstrzygalne (a nawet są poza RE).
+\end{exercise}
+
+\begin{exercise}{brak rozstrzygalnych podzbiorów}
+    Dany jest pewien nieskończony ciąg symboli $y_0,y_1,y_2,...$. Proszę udowodnić, że jeśli $L = \{y_0,y_0y_1,y_0y_1y_2,...\}$ należy do RE to jest także rozstrzygalny.
+\end{exercise}
+
+\begin{exercise}{redukcje}
+Dane są następujące języki:
+\begin{align*}
+L_0 &= \{\langle M \rangle \mid L(M) \neq \emptyset \} \\
+L_1 &= \{\langle M \rangle \mid L(M) = \Sigma^* \} \\
+L_2 &= \{\langle M \rangle \mid L(M) \text{ jest nieskończony} \} \\
+L_3 &= \{\langle M_1, M_2 \rangle \mid L(M_1) \subseteq L(M_2) \}
+\end{align*}
+
+Proszę pokazać następujące redukcje:
+(a) $L_0 \leq_m L_1$,  
+(b) $L_1 \leq_m L_3$,  
+(c) $L_1 \leq_m L_2$,  
+(d) $L_2 \leq_m L_1$,  
+(e) $L_3 \leq_m L_1$.
+    
+\end{exercise}
+
+\section{Ćwiczenia 4}
+
+\begin{exercise}{hierarchia arytmetyczna}
+    Dane są języki:
+
+\begin{align*}
+L_1 &= \{\langle M_1, M_2 \rangle \mid L(M_1) \text{ i } L(M_2) \text{ są rozłączne} \} \\
+L_2 &= \{\langle M \rangle \mid L(M) \text{ jest nieskończony} \} \\
+L_3 &= \{\langle M_1, M_2 \rangle \mid L(M_1) \subseteq L(M_2) \} \\
+L_4 &= \{\langle M \rangle \mid \|L(M)\| \geq 2014 \} \\
+L_5 &= \{\langle M \rangle \mid L(M) \text{ jest rozstrzygalny} \} \\
+L_6 &= \{\langle M \rangle \mid \text{żadne dwa słowa z } L(M) \text{ nie są tej samej długości} \} \\
+L_7 &= \{\langle M \rangle \mid L(M) \text{ zawiera słowa każdej długości} \} \\
+L_8 &= \{\langle M \rangle \mid \overline{L(M)} \text{ jest skończony} \} \\
+L_9 &= \{\langle M \rangle \mid \text{każdy prefiks słowa z } L(M) \text{ także należy do } L(M) \} \\
+L_{10} &= \{\langle M \rangle \mid L(M) = L(M)^* \}
+\end{align*}
+
+Dla każdego języka proszę wskazać możliwie najmniejszą klasę hierarchii arytmetycznej, do której należy.
+\end{exercise}
+
+\begin{exercise}{hierarchia arytmetyczna - niepełny co do długości}
+    Mówimy, że język $L$ jest niepełny co do długości $n$ jeśli nie zawiera wszystkich słów długości $n$. Język jest całkowicie niepełny, jeśli jest niepełny dla każdej długości. Proszę wskazać możliwie najmniejszą klasę hierarchii arytmetycznej, do której należy język:
+    $$L = \{\langle M \rangle \mid L(M) \text{ jest całkowicie niepełny} \}.$$
+\end{exercise}
+
+
+\begin{exercise}{hierarchia arytmetyczna - sygnatura}
+    Sygnatura długości języka $L$ to zbiór wszystkich długości jego słów, czyli $\{|x| \mid x \in L\}$. Proszę wskazać możliwie najmniejszą klasę hierarchii arytmetycznej, do której należy język:
+
+$$L = \{\langle M,N \rangle \mid \text{sygnatura długości } L(M) \text{ jest podzbiorem sygnatury długości } L(N) \}.$$
+\end{exercise}
+
+\begin{exercise}{hierarchia arytmetyczna - język rzadki}
+    Język $A$ jest rzadki, jeśli istnieje wielomian $p$ taki, że dla każdego $n$ $|A \cap \Sigma^n| \leq p(n)$. Proszę wskazać możliwie najmniejszą klasę hierarchii arytmetycznej, do której należy język:
+
+$$L = \{\langle M \rangle \mid  L(M) \text{ jest rzadki} \}.$$
+\end{exercise}
+
+\begin{exercise}{hierarchia arytmetyczna - enumeratory}
+    Proszę wskazać możliwie najmniejszą klasę hierarchii arytmetycznej, do której należy język:
+
+$$L = \{\langle E_1,E_2 \rangle \mid  \text{ enumeratory } E_1 \text{ i } E_2 \text{wyliczają te same słowa w tej samej kolejności} \}.$$
+\end{exercise}
+
+\begin{exercise}{enumerator z wycofywaniem}
+    Enumerator z wycofywaniem słów to taki enumerator, który poza wyliczaniem słów może je także wycofywać. Słowo należy do języka wyliczanego przez taki enumerator, jeśli w pewnym momencie jest wyliczane i już nigdy później nie jest wycofywane.
+
+\begin{enumerate}
+    \item Pokaż, że każdy język z $\text{RE} \cup \text{coRE}$ jest wyliczany przez enumerator z wycofywaniem.
+    \item Pokaż, że każdy język wyliczany przez enumerator należy do $\Sigma_2$.
+    \item Pokaż, że każdy język z $\Sigma_2$ jest wyliczany przez enumerator z wycofywaniem.
+\end{enumerate}
+\end{exercise}
+
+\section{Ćwiczenia 5}
+
+\begin{exercise}{wielomianowe warianty SAT-a}
+    Proszę podać algorytmy wielomianowe dla szczególnych przypadków problemu spełnialności formuł w postaci CNF (ang. \textit{conjunctive normal form}) podanych poniżej:
+\begin{enumerate}
+    \item SAT-CNF, gdzie każda zmienna występuje najwyżej 2 razy.
+    \item \textsc{Horn}-SAT, gdzie każda klauzula ma najwyżej jeden niezanegowany literał (czyli klauzule są postaci $((x_1 \land x_2 \land \cdots \land x_n) \Rightarrow y)$).
+    \item SAT-2CNF, gdzie każda klauzula ma najwyżej dwie zmienne.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{NP-trudne warianty SAT-a}
+    Proszę udowodnić następujące fakty:
+
+\begin{enumerate}
+    \item SAT-4CNF redukuje się do SAT-3CNF (czyli wersja z najwyżej 4ma literałami na klauzulę redukuje się do wersji z najwyżej 3ma literałami na klauzulę)
+    \item SAT-CNF redukuje się do SAT-3CNF (wersja bez ograniczeń na liczbę literałów na klauzulę redukuje się do SAT-3CNF)
+    \item SAT-3CNF redukuje się do SAT-3CNF, gdzie każda zmienna występuje najwyżej 3 razy
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}{przynależność CLIQUE do NP}
+    Proszę udowodnić, że problem \text{CLIQUE} należy do NP.
+\end{exercise}
+
+\begin{exercise}{przynależność HAMILTONIAN-CYCLE do NP}
+    Proszę udowodnić, że problem \text{HAMILTONIAN-CYCLE} należy do NP.
+\end{exercise}
+
+\begin{exercise}{zamkniętość klas}
+    Proszę udowodnić, że:
+
+\begin{enumerate}
+    \item klasa P jest zamknięta ze względu na konkatenację,
+    \item klasa P jest zamknięta ze względu na gwiazdkę Kleene'a,
+    \item klasa NP jest zamknięta ze względu na gwiazdkę Kleene'a.
+\end{enumerate}
+\end{exercise}

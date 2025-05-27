@@ -1,0 +1,66 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{cleveref}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{thmtools}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{listings, breakable, skins}
+\geometry{margin=2.5cm}
+\usetikzlibrary{calc}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection.}{1em}{}
+
+\newcommand{\Set}[1]{\left\{ #1 \right\}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+\newtheoremstyle{exerciseStyle}
+  {2pt}{2pt}
+  {\normalfont}
+  {}
+  {\bfseries}
+  {.}{ }
+  {\thmname{#1} \thmnumber{#2}}
+
+\theoremstyle{exerciseStyle}
+\newtheorem{exerciseEnv}{Zadanie}[section]
+
+
+\newenvironment{exercise}[1]{%
+  \vspace{10pt}
+  \begin{exerciseEnv}\label{ex:#1}%
+  \addcontentsline{toc}{subsection}{Zadanie \theexerciseEnv: #1}%
+  \setlength{\parindent}{0pt}%
+  \noindent\textit{(\hyperref[sol:#1]{rozwiązanie})}\par\vspace{4pt}%
+}{%
+  \end{exerciseEnv}%
+  \vspace{10pt}
+}
+
+
+\newenvironment{solution}[1]{%
+  \par\addvspace{1em}%
+  \addcontentsline{toc}{subsection}{Zadanie \ref{ex:#1}: #1}%
+  \noindent\textbf{Rozwiązanie do zadania~\ref{ex:#1}: #1}\label{sol:#1}\par%
+}{%
+  \par\addvspace{1em}%
+}
